@@ -8,13 +8,13 @@ Original file is located at
 """
 
 class Cliente(Entidade):
-  def __init__(self, nome = 0, telefone = 0, endereco = 0, cpf = 0):
+  def __init__(self, nome, telefone, endereco, cpf):
     self.nome = nome
     self.telefone = telefone
     self.endereco = endereco
     self.cpf = cpf
 
-  def nome_clt(self, nome):
+  """def nome_clt(self, nome):
     self.nome = nome
 
   def tel_clt(self, telefone):
@@ -24,7 +24,7 @@ class Cliente(Entidade):
     self.endereco = endereco
 
   def cpf_clt(self, cpf):
-    self.cpf = cpf
+    self.cpf = cpf"""
 
   def retorna_nome(self):
     return self.nome
