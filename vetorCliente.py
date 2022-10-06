@@ -18,7 +18,7 @@ class VetorCliente(Cliente):
 
   def buscaClienteCpf(self, cpf):
     for c in self.clientes:
-      if cpf == c.cpf:#e aqui tb, mas n sei como resolver
+      if cpf == c.id:#e aqui tb, mas n sei como resolver
         print("Cliente encontrado\n")
         return c
     print("Cliente não encontrado\n")
