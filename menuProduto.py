@@ -12,6 +12,8 @@ class MenuProduto:
             while x==1 or x==2 or x==3 or x==4:
                 if x==0:
                     break
+
+                #Funcao de cadstrar produto
                 elif x==1:
                     nome = input("Digite o nome do produto: ")
                     codigo = input("Digite o código do produto: ")
@@ -19,6 +21,8 @@ class MenuProduto:
                     quantidade = int(input("Digite a quantidade do produto: "))
                     p = Produto(nome, codigo, precounitario, quantidade)
                     vp.addProduto(p)
+
+                #Funcao de buscar produto
                 elif x==2:
                     x = int(input("\nSe você quiser buscar: \nPor nome digite 1 \nPor código digite 2"))
                     while x!=1 and x!=2:
@@ -30,10 +34,17 @@ class MenuProduto:
                     elif x==2:
                         codigo = input("Digite o código do produto\n")
                         vp.buscarProdutoCodigo(codigo)
-                #elif x==3:
-                    #função de listar produto
 
-                #elif x==4:
-                    #função de remover produto
+                #função de listar produto, talvez seja desnecessario
+                elif x==3:
+                    listaProdutos()
+                    
+                #Funcao de excluir produto
+                elif x==4:
+                    x = int(input("\nSe você quiser Excluir o produto: \nPor nome digite 1 \nPor código digite 2"))
+                    if x == 1:
+                        removerProdutoNome(nome)
+                    elif x == 2:
+                        buscarProdutoCodigo(nome)
 
         x = int(input("Digite: \n0 para sair \n1 para cadastrar produto \n2 busca produto \n3 para listar produtos \n4 remover produto")) 

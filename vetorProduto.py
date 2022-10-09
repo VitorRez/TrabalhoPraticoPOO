@@ -30,7 +30,14 @@ class VetorProduto(Produto):
         for p in self.Produtos:
             p.indentificacao()
 
+    def venderProdutoCodigo(self, Produto, quantidadeVendida):
+            p = buscarProdutoCodigo(Produto)
+            p.quantidade = p.quantidade - quantidadeVendida
 
-    def removerProduto(self, Produto, quantidadeVendida):
+    def removerProdutoNome(self, Produto):
         p = buscarProdutoNome(Produto)
-        p.quantidade = p.quantidade - quantidadeVendida
+        p.quantidade = 0
+
+    def removerProdutoCodigo(self, Produto):
+        p = buscarProdutoCodigo(Produto)
+        p.quantidade = 0
