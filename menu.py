@@ -1,16 +1,18 @@
 from menuCliente import MenuCliente
+from menuProduto import MenuProduto
 from vetorCliente import VetorCliente
+from vetorProduto import VetorProduto
 
 class menu:
 
     def showmenu():
         comando = 5
         vc = VetorCliente()
+        vp = VetorProduto()
         while comando != 0:
-            comando = int(input("Encerrar: 0\nGerenciamento de produtos: 1\nGerenciamento de clientes: 2\nRealizar venda: 3\n"))
+            comando = int(input("Digite: \n0 para sair\n1 para gerenciar produtos\n2 para gerenciar clientes\n3 para realizar uma venda "))
             if comando == 1:
-                #funções relacionadas aos produtos
-                print("tamo falido")
+                MenuProduto.menuP(vp)
             if comando == 2:
                 MenuCliente.menuC(vc)
             if comando == 3:
