@@ -10,16 +10,22 @@ class VetorCliente(Cliente):
 
   def buscaClienteNome(self, nome):
     for c in self.clientes:
-      if nome == c.nome:#vai dar erro aqui no futuro
+      if nome == c.nome:
         print("Cliente encontrado\n")
-        return c
+        c.identificacao()
+        return
     print("Cliente não encontrado\n")
-    return None
+    return
 
   def buscaClienteCpf(self, cpf):
     for c in self.clientes:
-      if cpf == c.id:#e aqui tb, mas n sei como resolver
+      if cpf == c.id:
         print("Cliente encontrado\n")
-        return c
+        c.identificacao()
+        return
     print("Cliente não encontrado\n")
-    return None
+    return
+
+  def listaClientes(self):
+    for c in self.clientes:
+      c.identificacao()

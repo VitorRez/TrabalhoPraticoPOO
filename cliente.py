@@ -31,4 +31,4 @@ class Cliente(Entidade):
     return self.cpf
 
   def identificacao(self):
-    return self.Entidade.nome
+    print(self.nome, self.telefone, self.endereco, self.id)
