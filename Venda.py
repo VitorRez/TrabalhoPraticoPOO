@@ -1,30 +1,18 @@
-from cliente import cliente
+from cliente import Cliente
 from vetorProduto import VetorProduto, produto
 from entidade import Entidade
 
 class Venda(Entidade):
-    def __init__ (self, vetorProduto):
-        self.estoque = [] 
-        self.estoque = vetorProduto
+    #coloquei a inicialização da superclasse entidade
+    #não chama o metodo vetorProduto, e sim um vetor produto
+    def __init__ (self, vp):
+        super().__init__('venda', 0) 
+        self.estoque = vp
         self.carrinho = []
 
-    def Qtd_Prod(self, Quantidade):
-        self.Quantidade = Quantidade
-
-    def Total_Valor(self, Total):
-        self.Total = Total
-            
-    def Codigo(self, IdProduto):
-        self.IdProduto = IdProduto
-
-    def retorna_Codigo(self):
-        return self.IdProduto
-
-    def retorna_Quantidade(self):
-        return self.Quantidade
-
-    def retorna_Total(self):
-        return self.Total
+    #defini a identificação para a classe
+    def identificacao(self):
+        print(self.nome, self.carrinho)
 
     def menuVenda(self):
         comando = int(input("Sair: 0\nRemover Produto do carrinho: 1\nAdicionar produto no carrinho: 2\nAlterar quantidade de um produto: 3\nFinalizar compra: 4\nCancelar compra: 5"))
@@ -70,7 +58,7 @@ class Venda(Entidade):
                 
                     
                 elif metodo == 2:
-                    nome = int(input("Digite o nome do produto: \n"))
+                    nome = input("Digite o nome do produto: \n")
                     prod = VetorProduto.buscarProdutoNome(nome)
                     quantidade = int(input("Digite a quantidade do produto: \n"))
                     if quantidade > prod.quantidade:
@@ -117,4 +105,3 @@ class Venda(Entidade):
 
             elif comando == 5:
                 break
-

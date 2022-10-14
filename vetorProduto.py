@@ -7,7 +7,7 @@ class VetorProduto(produto):
 
     def addProduto(self, Produto):
         for p in self.Produtos:
-            if p.nome == Produto.nome:
+            if p.nome == Produto.nome or p.codigo == Produto.codigo:
                 x = int(input("Produto ja cadastrado, deseja adicionar a quantidade registrada?\n1 sim\n2 não "))
                 if x == 1:
                     p.quantidade += Produto.quantidade
@@ -20,19 +20,19 @@ class VetorProduto(produto):
     def buscarProdutoNome(self, nome):
         for p in self.Produtos:
             if nome == p.nome:
-                print("Produto encontrado\n")
+                print("Produto encontrado")
                 p.identificacao()
                 return p
-        print("Produto não encontrado\n")
+        print("Produto não encontrado")
         return None
 
     def buscarProdutoCodigo(self, codigo):
         for p in self.Produtos:
             if codigo == p.codigo:
-                print("Produto encotrado\n")
+                print("Produto encotrado")
                 p.identificacao()
                 return p
-        print("Produto não encotrado\n")
+        print("Produto não encotrado")
         return None
 
     def listaProdutos(self):
