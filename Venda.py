@@ -1,11 +1,10 @@
-from cliente import cliente
-from vetorProduto import VetorProduto
-from Produto import produto
-from entidade import Entidade
+from vetorProduto import *
+from entidade import *
 
-class Venda(Entidade):
+class Venda(entidade):
     def __init__ (self):
         self.carrinho = []
+        menuVenda.showMenu()
 
     def Qtd_Prod(self, Quantidade):
         self.Quantidade = Quantidade
@@ -27,94 +26,109 @@ class Venda(Entidade):
 
 
 class menuVenda(Venda):
-    def __init__(self):
-        menuVenda.showMenu()
-
-
-    def showMenu(self, vetorProduto):
+    def __init__(self, vetorProduto):
         self.produtos = []
         self.produtos = vetorProduto
+
+
+    def showMenu(self):
         comando = int(input("Sair: 0\nRemover Produto do carrinho: 1\nAdicionar produto no carrinho: 2\nAlterar quantidade de um produto: 3\nFinalizar compra: 4\nCancelar compra: 5"))
         while comando != 0:
             if comando == 1:
                 metodo = int(input("Remover pelo codigo: 1\nRemover pelo nome: 2\n"))
                 if metodo == 1:
                     codigo = int(input("Digite o código do produto: \n"))
-                    prod = VetorProduto.buscarProdutoCodigo(codigo)
+                    
                     pos = 0 #posicao da lista que esta sendo feito a busca
-                    for p in self.carrinho:
+                    for p in Venda.carrinho:
                          
-                        if p.codigo == prod.codigo:
-                            print(self.carrinho.pop(pos), " foi removido com sucesso")
+                        if p.codigo == codigo:
+                            print(Venda.carrinho.pop(pos), " foi removido com sucesso")
+                            #incrementar novamente a quantidade no estoque
                             break
                         pos = pos + 1
                 
 
                 elif metodo == 2:
                     nome = int(input("Digite o nome do produto: \n"))
-                    prod = VetorProduto.buscarProdutoNome(nome)
+                    
                     pos = 0 #posicao da lista que esta sendo feito a busca
-                    for p in self.carrinho:
-                        if p.nome == prod.nome:
-                            print(self.carrinho.pop(pos), " foi removido com sucesso")
+                    for p in Venda.carrinho:
+                        if p.nome == nome:
+                            print(Venda.carrinho.pop(pos)," foi removido com sucesso")
+                            #incrementar novamente a quantidade no estoque
                             break
                         pos = pos + 1
-
-                else:
-                    print("Digite um valor válido")                
-               
+    
             elif comando == 2:
                 metodo = int(input("Adicionar pelo codigo: 1\nAdicionar pelo nome: 2\n"))
                 if metodo == 1:
                     codigo = int(input("Digite o código do produto: \n"))
-                    #prod = VetorProduto.buscarProdutoCodigo(codigo)
+                    produto = vetorProduto.buscarProdutoCodigo(codigo)
+                    print(produto)
                     quantidade = int(input("Digite a quantidade do produto: \n"))
+
                     if quantidade > prod.quantidade:
                         print("Quantidade do produto indisponível!\n")
                     else:
                         vetorProduto.venderProdutoCodigo(prod,quantidade)
                         prod.quantidade = quantidade
-                        self.carrinho.append(prod)
+                        Venda.carrinho.append(prod)
+
+                        
                 
                     
                 elif metodo == 2:
                     nome = int(input("Digite o nome do produto: \n"))
-                    #prod = VetorProduto.buscarProdutoNome(nome)
+                    produto = vetorProduto.buscarProdutoNome(nome)
+                    print(produto)
                     quantidade = int(input("Digite a quantidade do produto: \n"))
                     if quantidade > prod.quantidade:
                         print("Quantidade do produto indisponível!")
                     else:
-                        vetorProduto.venderProdutoCodigo(prod,quantidade)
+                        vetorProduto.venderProdutoNome(nome,quantidade)
                         prod.quantidade = quantidade
-                        self.carrinho.append(prod)
-
-                else:
-                    print("Digite um valor válido")
-
+                        Venda.carrinho.append(prod)
+                        #decrementar quantidade adicionada ao carrinho
+                
             elif comando == 3:
                 metodo = int(input("Alterar pelo código: 1\nAlterar pelo nome: 2\n"))
                 if metodo == 1:
                     codigo = int(input("Digite o código do produto: \n"))
-                    prod = VetorProduto.buscarProdutoNome(codigo)
+                    prod = vetorProduto.buscarProdutoNome(codigo)
+                    print(prod)
+                    new_qtd = int(input("Qual a nova quantidade?\n"))
                     pos = 0 #posicao da lista que esta sendo feito a busca
-                    for p in self.carrinho:
+                    for p in Venda.carrinho:
                          
                         if p.codigo == prod.codigo:
-                            prod.quantidade = quantidade
-                            self.carrinho[pos] = prod
+                            if prod.quantidade > new_qtd:
+                                #decrementar quantidade do estoque
+                                pass 
+                            else:
+                                #incrementar quantidade no estoque
+                                pass
+                            prod.quantidade = new_qtd
+                            Venda.carrinho[pos] = prod
                             print("Alterado com sucesso")
                             break
                         pos = pos + 1
                     
                 elif metodo == 2:
                     nome = int(input("Digite o nome do produto: \n"))
-                    prod = VetorProduto.buscarProdutoNome(nome)
+                    prod = vetorProduto.buscarProdutoNome(nome)
                     pos = 0 #posicao da lista que esta sendo feito a busca
-                    for p in self.carrinho:
+                    for p in Venda.carrinho:
                          
                         if p.nome == prod.nome:
+                            if prod.quantidade > new_qtd:
+                                #decrementar quantidade do estoque
+                                pass 
+                            else:
+                                #incrementar quantidade no estoque
+                                pass
                             prod.quantidade = quantidade
-                            self.carrinho[pos] = prod
+                            Venda.carrinho[pos] = prod
                             print("Alterado com sucesso")
                             break
                         pos = pos + 1
@@ -123,14 +137,14 @@ class menuVenda(Venda):
             elif comando == 4:
                 #percorre o carrinho calculando o valor total e listando os produtos e suas quantidades
                 valor_total = 0
-                for p in self.carrinho:
+                for p in Venda.carrinho:
                     valor_total = valor_total + p.quantidade * p.valor
-                    print("Item: \n")
-                    print("Quantidade: \n")    
-                    print("Valor unitário: \n")      
+                    print("Item: \n", p.nome)
+                    print("Quantidade: \n". p.quantidade)    
+                    print("Valor unitário: \n", p.valorunitario)
 
-                print("Total da compra: ", valor_total)   
+                print("\nTotal da compra: ", valor_total)   
 
             elif comando == 5:
-                self.carrinho.clear()
+                Venda.carrinho.clear()
                 break
