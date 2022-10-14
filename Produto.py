@@ -3,8 +3,6 @@ from entidade import Entidade
 class produto(Entidade):
     def __init__(self, nome, codigo, precounitario, quantidade):
         super().__init__(nome, codigo)
-        self.nome = nome
-        self.codigo = codigo
         self.quantidade = quantidade
         self.preco_unitario = precounitario
 

@@ -1,5 +1,6 @@
 from vetorProduto import *
 from cliente import *
+from Produto import *
 from vetorCliente import *
 from entidade import *
 
