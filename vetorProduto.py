@@ -40,7 +40,7 @@ class VetorProduto(produto):
             p.identificacao()
 
     def venderProdutoCodigo(self, Produto, quantidadeVendida):
-            p = self.buscarProdutoCodigo(Produto)
+            p = self.buscarProdutoCodigo(Produto.codigo)
             p.quantidade = p.quantidade - quantidadeVendida
 
     def removerProdutoNome(self, Produto):

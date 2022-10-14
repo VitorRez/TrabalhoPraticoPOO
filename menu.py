@@ -2,7 +2,8 @@ from menuCliente import MenuCliente
 from menuProduto import MenuProduto
 from vetorCliente import VetorCliente
 from vetorProduto import VetorProduto
-from Venda import Venda
+from Venda import Venda, menuVenda
+from cliente import Cliente
 
 class menu:
     def showmenu():
@@ -28,8 +29,14 @@ class menu:
                 print("--------------------------")
                 print("      REALIZAR VENDA      ")
                 print("--------------------------")
-                ve = Venda(vp)
-                ve.menuVenda()
+                x = int(input("Deseja buscar o cliente por nome ou por cpf?\n1 nome\n2 codigo\n"))
+                if x == 1:
+                    nome = input("Digite o nome do cliente: ")
+                    c = vc.buscaClienteNome(nome)
+                if x == 2:
+                    cpf = int(input("Digite o cpf do cliente: "))
+                    c = vc.buscaClienteCpf(cpf)
+                menuVenda.showMenu(vp, c)
             if comando > 3 or comando < 0:
                 print("Digite um comando válido")
         
