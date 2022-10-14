@@ -19,7 +19,7 @@ class VetorProduto(Produto):
 
     def buscarProdutoCodigo(self, codigo):
         for p in self.Produtos:
-            if codigo == p.codigo:
+            if codigo == p.id:
                 print("Produto encotrado\n")
                 p.indentificacao()
                 return p
@@ -31,7 +31,7 @@ class VetorProduto(Produto):
             p.indentificacao()
 
     def venderProdutoCodigo(self, Produto, quantidadeVendida):
-            p = self.buscarProdutoCodigo(Produto)
+            p = buscarProdutoCodigo(Produto)
             p.quantidade = p.quantidade - quantidadeVendida
 
     def removerProdutoCodigo(self, Produto):

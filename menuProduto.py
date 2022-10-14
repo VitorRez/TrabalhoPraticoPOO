@@ -1,4 +1,4 @@
-from Produto import produto
+from Produto import Produto
 from vetorProduto import vetorProduto
 
 class MenuProduto:

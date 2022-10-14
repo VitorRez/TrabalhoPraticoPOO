@@ -1,8 +1,8 @@
 from entidade import Entidade
 
-class produto(Entidade):
+class Produto(Entidade):
     def __init__(self, nome, codigo, precounitario, quantidade):
-        super().__init__(nome, codigo)
+        super().__init__(codigo, nome)
         self.quantidade = quantidade
         self.preco_unitario = precounitario
 
@@ -10,7 +10,7 @@ class produto(Entidade):
         return self.nome
 
     def retorna_codigo(self):
-        return self.codigo
+        return self.id
 
     def retorna_quantidade(self):
         return self.quantidade
@@ -19,4 +19,4 @@ class produto(Entidade):
         return self.precounitario
 
     def identificacao(self):
-        print(self.nome, self.codigo, self.preco_unitario, self.quantidade)
+        print(self.nome, self.id, self.preco_unitario, self.quantidade)
