@@ -1,24 +1,15 @@
-from cliente import cliente
-from vetorProduto import VetorProduto, produto
-from entidade import Entidade
+from vetorProduto import *
+from entidade import *
 
-class Venda(Entidade):
-    def __init__ (self, vetorProduto):
-        self.estoque = [] 
-        self.estoque = vetorProduto
+class Venda(entidade):
+    def __init__ (self):
         self.carrinho = []
         menuVenda.showMenu()
 
-    #defini a identificação para a classe
-    def identificacao(self):
-        print(self.nome, self.carrinho)
-
 
 class menuVenda(Venda):
-    def __init__(self, vetorProduto):
-        self.produtos = []
-        self.produtos = vetorProduto
-
+    def __init__(self):
+        pass
 
     def showMenu(self):
         comando = int(input("Sair: 0\nRemover Produto do carrinho: 1\nAdicionar produto no carrinho: 2\nAlterar quantidade de um produto: 3\nFinalizar compra: 4\nCancelar compra: 5"))
@@ -69,7 +60,8 @@ class menuVenda(Venda):
                     
                 elif metodo == 2:
                     nome = int(input("Digite o nome do produto: \n"))
-                    prod = VetorProduto.buscarProdutoNome(nome)
+                    produto = vetorProduto.buscarProdutoNome(nome)
+                    print(produto)
                     quantidade = int(input("Digite a quantidade do produto: \n"))
                     if quantidade > prod.quantidade:
                         print("Quantidade do produto indisponível!")
@@ -136,4 +128,3 @@ class menuVenda(Venda):
             elif comando == 5:
                 Venda.carrinho.clear()
                 break
-
