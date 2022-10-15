@@ -10,10 +10,10 @@ class Persistencia(Entidade):
     self.produto = vp
     self.venda = vv
 
-  def escreveCliente(self, vc):
+  def escreveCliente(self):
     fileC = open("Cliente.txt", "w")#n esquecer de mudar para "a". Vale a pena mudar par "a"?
     
-    for i in vc.clientes:
+    for i in self.cliente.clientes:
       fileC.write(str(i.nome) + "\n")
       fileC.write(str(i.telefone) + "\n")
       fileC.write(str(i.endereco) + "\n")
@@ -22,7 +22,7 @@ class Persistencia(Entidade):
     fileC.close()
     #analisar o '\n' no arquivo
 
-  def escreveProduto(self, produto):
+  def escreveProduto(self):
     fileP = open("Produto.txt", "a")
 
     for i in self.produto.Produtos:
@@ -33,7 +33,7 @@ class Persistencia(Entidade):
     
     fileP.close()
 
-  def escreveVenda(self, venda):
+  def escreveVenda(self):
     fileV = open("Venda.txt", "a")
     
     for i in self.venda.carrinho:
