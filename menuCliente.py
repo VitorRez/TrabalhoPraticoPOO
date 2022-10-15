@@ -10,7 +10,7 @@ class MenuCliente:
         nome = input("Digite o nome do cliente: ")
         tel = input("Digite o telefone do cliente: ")
         end = input("Digite o endereço do cliente: ")
-        cpf = input("Digite o cpf do cliente: ")
+        cpf = int(input("Digite o cpf do cliente: "))
         c = Cliente(nome, tel, end, cpf)
         vc.addCliente(c)
       elif x == 2:
@@ -26,7 +26,7 @@ class MenuCliente:
         elif x == 2:
           cpf = input("Digite o cpf do cliente: ")
           c = vc.buscaClienteCpf(cpf)
-          retunr c
+          return c
           
       x = int(input("Digite: \n0 para sair\n1 para cadastrar do cliente\n2 para buscar o cliente\n3 para voltar\n"))
       Persistencia(vc, 0, 0).escreveCliente()#sempre que eu finalizar eu o metodo eu faço a escrita? Ou isso será opcional?

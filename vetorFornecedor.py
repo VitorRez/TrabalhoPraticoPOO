@@ -1,8 +1,8 @@
 #from entidade import Entidade
 from Fornecedores import Fornecedor
-from Produto import Produto
+from Produto import produto
 
-class vetorFornecedor(Fornecedor):
+class vetorFornecedor:
     def __init__(self):
         self.Fornecedores = []
 
@@ -12,25 +12,28 @@ class vetorFornecedor(Fornecedor):
     def buscarFornecedorNome(self, nome):
         for f in self.Fornecedores:
             if nome == f.nome:
-                print("Produto encontrado\n")
-                f.indentificacao()
+                print("Fornecedor encontrado\n")
+                f.identificacao()
                 return f
-        print("Produto não encontrado\n")
-        return NONE
+        print("Fornecedor não encontrado\n")
+        return None
 
     def listaFornecedores(self):
             for f in self.Fornecedores:
-                f.indentificacao()
+                f.identificacao()
 
     def buscarFornecedorCnpj(self, cnpj):
         for f in self.Fornecedores:
-            if cnpj == f.cnpj:
-                print("Produto encontrado\n")
-                f.indentificacao()
+            if cnpj == f.id:
+                print("Fornecedor encontrado\n")
+                f.identificacao()
                 return f
-        print("Produto não encontrado\n")
-        return NONE
+        print("Fornecedor não encontrado\n")
+        return None
 
     def removerFornecedorCnpj(self, cnpj):
-        f = buscarFornecedorCodigo(cnpj)
-        self.Fornecedores.remove(f)
+        f = self.buscarFornecedorCnpj(cnpj)
+        if f != None:
+            self.Fornecedores.remove(f)
+        else:
+            return

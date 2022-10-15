@@ -1,7 +1,7 @@
 from entidade import Entidade
 from cliente import Cliente
 from vetorCliente import VetorCliente
-from produto import Produto
+from Produto import produto
 from vetorProduto import VetorProduto
 
 class Persistencia(Entidade):
@@ -69,7 +69,7 @@ class Persistencia(Entidade):
     tam = 0
 
     while tam < len(lp)-1:
-      p = Produto(0, 0, 0, 0)
+      p = produto(0, 0, 0, 0)
 
       p.nome = lp[tam]
       p.quantidade = lp[tam+1]
@@ -88,7 +88,7 @@ class Persistencia(Entidade):
     tam = 0
 
     while tam < len(lv)-1:
-      p = Produto(0, 0, 0, 0)
+      p = produto(0, 0, 0, 0)
 
       p.nome = lv[tam]
       p.quantidade = lv[tam+1]
