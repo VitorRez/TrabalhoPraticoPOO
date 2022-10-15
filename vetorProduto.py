@@ -61,3 +61,4 @@ class VetorProduto(produto):
             p.quantidade = p.quantidade + Qtd
         else:
             return
+

@@ -10,7 +10,7 @@ class produto(Entidade):
         return self.nome
 
     def retorna_codigo(self):
-        return self.codigo
+        return self.id
 
     def retorna_quantidade(self):
         return self.quantidade
