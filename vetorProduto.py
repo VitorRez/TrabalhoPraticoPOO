@@ -1,7 +1,7 @@
 #from entidade import Entidade
-from Produto import Produto
+from Produto import produto
 
-class VetorProduto(Produto):
+class VetorProduto(produto):
     def __init__(self):
         self.Produtos = []
 
@@ -12,41 +12,52 @@ class VetorProduto(Produto):
         for p in self.Produtos:
             if nome == p.nome:
                 print("Produto encontrado\n")
-                p.indentificacao()
+                p.identificacao()
                 return p
         print("Produto não encontrado\n")
-        return NONE
+        return None
 
     def buscarProdutoCodigo(self, codigo):
         for p in self.Produtos:
-            if codigo == p.codigo:
+            if codigo == p.id:
                 print("Produto encotrado\n")
-                p.indentificacao()
+                p.identificacao()
                 return p
         print("Produto não encotrado\n")
-        return NONE
+        return None
 
     def listaProdutos(self):
         for p in self.Produtos:
-            p.indentificacao()
+            p.identificacao()
 
     def venderProdutoCodigo(self, Produto, quantidadeVendida):
             p = self.buscarProdutoCodigo(Produto)
-            p.quantidade = p.quantidade - quantidadeVendida
+            if p != None:
+                p.quantidade = p.quantidade - quantidadeVendida
+            else:
+                return
 
-    def removerProdutoCodigo(self, Produto):
-        p = buscarProdutoCodigo(Produto)
-        p.identificacao()
-        x = int(input("\nVocê realmente deeja excluir esse item? \n digite: \n1- Sim \n2- Não"))
-        if x==1:
-            self.Produtos.remove(p)
-        elif x==2:
+    def removerProdutoCodigo(self, codigo):
+        p = self.buscarProdutoCodigo(codigo)
+        if p != None:
+            x = int(input("\nVocê realmente deseja excluir esse item?\n1 Sim \n2 Não\n"))
+            if x==1:
+                self.Produtos.remove(p)
+            elif x==2:
+                return 
+        else:
             return
 
     def adicionarProdutoNome(self, Produto, Qtd):
-        p = buscarProdutoNome(Produto)
-        p.quantidade = p.quantiade + Qtd
+        p = self.buscarProdutoNome(Produto)
+        if p != None:
+            p.quantidade = p.quantidade + Qtd
+        else:
+            return
 
     def adicionarProdutoCodigo(self, Produto, Qtd):
-        p = buscarProdutoCodigo(Produto)
-        p.quantidade = p.quantiade + Qtd
+        p = self.buscarProdutoCodigo(Produto)
+        if p != None:
+            p.quantidade = p.quantidade + Qtd
+        else:
+            return
