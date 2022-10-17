@@ -3,12 +3,15 @@ from cliente import Cliente
 from vetorCliente import VetorCliente
 from Produto import produto
 from vetorProduto import VetorProduto
+from Fornecedores import Fornecedor
+from vetorFornecedor import vetorFornecedor
 
 class Persistencia(Entidade):
-  def __init__(self, vc, vp, vv):
+  def __init__(self, vc, vp, vv, vf):
     self.cliente = vc
     self.produto = vp
     self.venda = vv
+    self.fornecedores = vf
 
   def escreveCliente(self):
     fileC = open("Cliente.txt", "w")#n esquecer de mudar para "a". Vale a pena mudar par "a"?
@@ -23,7 +26,7 @@ class Persistencia(Entidade):
     #analisar o '\n' no arquivo
 
   def escreveProduto(self):
-    fileP = open("Produto.txt", "a")
+    fileP = open("Produto.txt", "w")
 
     for i in self.produto.Produtos:
       fileP.write(str(i.nome) + "\n")
@@ -32,9 +35,20 @@ class Persistencia(Entidade):
       fileP.write(str(i.id) + "\n")
     
     fileP.close()
+  
+  def escreveFornecedores(self):
+    fileC = open("Fornecedores.txt", "w")#n esquecer de mudar para "a". Vale a pena mudar par "a"?
+    
+    for i in self.fornecedores.Fornecedores:
+      fileC.write(str(i.nome) + "\n")
+      fileC.write(str(i.telefone) + "\n")
+      fileC.write(str(i.endereco) + "\n")
+      fileC.write(str(i.id) + "\n")
+    
+    fileC.close()
 
   def escreveVenda(self):
-    fileV = open("Venda.txt", "a")
+    fileV = open("Venda.txt", "w")
     
     for i in self.venda.carrinho:
       fileV.write(str(i.nome) + "\n")
@@ -52,10 +66,10 @@ class Persistencia(Entidade):
     while tam < len(lc)-1: #esse "-1" é para não considerar o "\n" q aparece no final
       c = Cliente(0, 0, 0, 0)
 
-      c.nome = lc[tam]
-      c.telefone = lc[tam+1]
-      c.endereco = lc[tam+2]
-      c.id = lc[tam+3]
+      c.nome = lc[tam].strip()
+      c.telefone = lc[tam+1].strip()
+      c.endereco = lc[tam+2].strip()
+      c.id = int(lc[tam+3])
       
       vc.addCliente(c)
       tam += 4
@@ -71,16 +85,35 @@ class Persistencia(Entidade):
     while tam < len(lp)-1:
       p = produto(0, 0, 0, 0)
 
-      p.nome = lp[tam]
-      p.quantidade = lp[tam+1]
-      p.preco_unitario = lp[tam+2]
-      p.id = lp[tam+3]
+      p.nome = lp[tam].strip()
+      p.quantidade = int(lp[tam+1])
+      p.preco_unitario = float(lp[tam+2])
+      p.id = int(lp[tam+3])
       
       vp.addProduto(p)
       tam += 4
       del p
 
     fileP.close()
+
+  def leFornecedores(self, vf):
+    fileC = open("Fornecedores.txt", "r")
+    lf = fileC.readlines()
+    tam = 0
+   
+    while tam < len(lf)-1: #esse "-1" é para não considerar o "\n" q aparece no final
+      f = Fornecedor(0, 0, 0, 0)
+
+      f.nome = lf[tam].strip()
+      f.telefone = lf[tam+1].strip()
+      f.endereco = lf[tam+2].strip()
+      f.id = int(lf[tam+3])
+      
+      vf.addFornecedor(f)
+      tam += 4
+      del f
+
+    fileC.close()
 
   def leVenda(self, vv):
     fileV = open("Venda.txt", "r")
@@ -90,10 +123,10 @@ class Persistencia(Entidade):
     while tam < len(lv)-1:
       p = produto(0, 0, 0, 0)
 
-      p.nome = lv[tam]
-      p.quantidade = lv[tam+1]
-      p.preco_unitario = lv[tam+2]
-      p.id = lv[tam+3]
+      p.nome = lv[tam].strip()
+      p.quantidade = int(lv[tam+1])
+      p.preco_unitario = float(lv[tam+2])
+      p.id = int(lv[tam+3])
 
       vv.carrinho.append(p)
       tam += 4

@@ -12,7 +12,6 @@ class VetorProduto(produto):
         for p in self.Produtos:
             if nome == p.nome:
                 print("Produto encontrado\n")
-                p.identificacao()
                 return p
         print("Produto não encontrado\n")
         return None
@@ -21,7 +20,6 @@ class VetorProduto(produto):
         for p in self.Produtos:
             if codigo == p.id:
                 print("Produto encotrado\n")
-                p.identificacao()
                 return p
         print("Produto não encotrado\n")
         return None

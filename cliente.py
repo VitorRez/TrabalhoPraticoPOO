@@ -6,18 +6,6 @@ class Cliente(Entidade):
     self.telefone = telefone
     self.endereco = endereco
 
-  #"""def nome_clt(self, nome):
-  #  self.nome = nome
-
-  #def tel_clt(self, telefone):
-  #  self.telefone = telefone
-
-  #def end_clt(self, endereco):
-  #  self.endereco = endereco
-
-  #def cpf_clt(self, cpf):
-  #  self.cpf = cpf"""
-
   def retorna_nome(self):
     return self.nome
 
@@ -31,4 +19,4 @@ class Cliente(Entidade):
     return self.cpf
 
   def identificacao(self):
-    print(self.nome, self.telefone, self.endereco, self.id)
+    print("Nome: ",self.nome, "Telefone: ", self.telefone, "Endereço: ", self.endereco, "cpf: ", self.id)

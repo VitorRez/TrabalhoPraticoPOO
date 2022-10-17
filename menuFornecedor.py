@@ -14,6 +14,7 @@ class menuFornecedor:
             #Função de cadstrar fornecedor
             elif x==1:
                 nome = input("Digite o nome do Fornecedor: ")
+                nome = nome.title()
                 cnpj = int(input("Digite o cnpj do Fornecedor: "))
                 telefone = input("Digite o telefone do Fornecedor: ")
                 endereco = input("Digite o endereco do Fornecedor: ")
@@ -26,17 +27,18 @@ class menuFornecedor:
                     print("Digite um valor válido\n")
                     x = int(input("\nSe você quiser buscar: \nPor nome digite 1 \nPor código digite 2 "))
                 if x==1:
-                    nome = input("Digite o nome do Fornecedor ")
+                    nome = input("Digite o nome do Fornecedor: ")
+                    nome = nome.title()
                     vf.buscarFornecedorNome(nome)
                 elif x==2:
-                    cnpj = int(input("Digite o cnpj do Fornecedor "))
+                    cnpj = int(input("Digite o cnpj do Fornecedor: "))
                     vf.buscarFornecedorCnpj(cnpj)
             
             elif x==3:
                 vf.listaFornecedores()
                 
             elif x==4:
-                cnpj = int(input("Digite o cnpj do fornecedor "))
+                cnpj = int(input("Digite o cnpj do fornecedor: "))
                 vf.removerFornecedorCnpj(cnpj)
 
             x = int(input("Digite: \n0 Para sair \n1 Para cadastrar Fornecedor \n2 Buscar Fornecedor \n3 Para listar Fornecedores \n4 Remover Fornecedores\n"))

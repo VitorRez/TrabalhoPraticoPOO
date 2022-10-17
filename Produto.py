@@ -19,4 +19,4 @@ class produto(Entidade):
         return self.precounitario
 
     def identificacao(self):
-        print(self.nome, self.id, self.preco_unitario, self.quantidade)
+        print("Nome: ", self.nome, "Código: ", self.id, "Preço unitário: ", self.preco_unitario, "Quantidade: ", self.quantidade)

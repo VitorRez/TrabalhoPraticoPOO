@@ -5,7 +5,6 @@ class Fornecedor(Entidade):
         super().__init__(cnpj, nome)
         self.telefone = telefone
         self.endereco = endereco
-        self.codigo = cnpj
 
     def retorna_nome(self):
             return self.nome
@@ -20,4 +19,4 @@ class Fornecedor(Entidade):
             return self.endereco
 
     def identificacao(self):
-            print(self.nome, self.id, self.telefone, self.endereco)
+            print("Nome: ", self.nome, "cnpj: ", self.id, "Telefone: ", self.telefone, "Endereço: ", self.endereco)
