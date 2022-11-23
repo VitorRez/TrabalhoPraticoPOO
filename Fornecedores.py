@@ -2,7 +2,8 @@ from entidade import Entidade
 
 class Fornecedor(Entidade):
     def __init__(self, nome, cnpj, telefone, endereco):
-        super().__init__(cnpj, nome)
+        super().__init__(cnpj)
+        self.nome = nome
         self.telefone = telefone
         self.endereco = endereco
 

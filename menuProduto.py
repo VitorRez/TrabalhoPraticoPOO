@@ -1,8 +1,9 @@
 from Produto import produto
 from vetorProduto import VetorProduto
+from vetorFornecedor import *
 
 class MenuProduto:
-    def menuP(vp):
+    def menuP(vp, vf):
         x = int(input("Digite: \n0 Para sair \n1 Para cadastrar produto \n2 Busca produto \n3 Para listar produtos \n4 Remover produto \n5 Adicionar quantidade de um produto\n6 Retirar quantidade de um produto\n"))
 
         while x!=0 and x!=1 and x!=2 and x!=3 and x!=4 and x!=5 and x!=6:
@@ -16,11 +17,17 @@ class MenuProduto:
             #Funcao de cadstrar produto
             elif x==1:
                 nome = input("Digite o nome do produto: ")
-                nome = nome.title()
                 codigo = int(input("Digite o código do produto: "))
                 precounitario = float(input("Digite o preço unitário do produto: "))
                 quantidade = int(input("Digite a quantidade do produto: "))
-                p = produto(nome, codigo, precounitario, quantidade)
+                metodo = int(input("Deseja buscar o fornecedor: \nPor nome digite 1 \nPor cnpj digite 2\n"))
+                if metodo == 1:
+                    fornecedor_nome = input("Digite o nome do fornecedor: ")
+                    f = vf.buscarFornecedorNome(fornecedor_nome)
+                if metodo == 2:
+                    fornecedor_cnpj = int(input("Digite o cnpj do fornecedor: "))
+                    f = vf.buscarFornecedorCnpj(fornecedor_cnpj)
+                p = produto(nome, codigo, f, precounitario, quantidade)
                 i = 0
                 for x in vp.Produtos:
                     if x.nome == nome or x.id == codigo:
@@ -42,7 +49,6 @@ class MenuProduto:
                     x = int(input("\nSe você quiser buscar: \nPor nome digite 1 \nPor código digite 2\n"))
                 if x==1:
                     nome = input("Digite o nome do produto: ")
-                    nome = nome.title()
                     vp.buscarProdutoNome(nome)
                 elif x==2:
                     codigo = int(input("Digite o código do produto: "))
@@ -61,7 +67,6 @@ class MenuProduto:
                 x = int(input("Se você quiser Adicionar o produto:\nPor nome digite 1 \nPor código digite 2\n"))
                 if x == 1:
                     nome = input("Digite o nome do produto: ")
-                    nome = nome.title()
                     Qtd = int(input("Digite a quantidade do produto: "))
                     vp.adicionarProdutoNome(nome, Qtd)
                 elif x == 2:

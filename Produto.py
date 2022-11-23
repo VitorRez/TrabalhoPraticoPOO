@@ -1,8 +1,10 @@
 from entidade import Entidade
 
 class produto(Entidade):
-    def __init__(self, nome, codigo, precounitario, quantidade):
-        super().__init__(codigo, nome)
+    def __init__(self, nome, codigo, fornecedor, precounitario, quantidade):
+        super().__init__(codigo)
+        self.nome = nome
+        self.fornecedor = fornecedor
         self.quantidade = quantidade
         self.preco_unitario = precounitario
 

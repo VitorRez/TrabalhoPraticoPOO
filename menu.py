@@ -34,8 +34,9 @@ class menu:
                     print("---------------------------")
                     print("  GERENCIADOR DE PRODUTOS  ")
                     print("---------------------------")
-                    MenuProduto.menuP(vp)
+                    MenuProduto.menuP(vp, vf)
                     p.escreveProduto()
+                    p.escreveFornecedores()
                 if comando == 2:
                     print("---------------------------")
                     print("  GERENCIADOR DE CLIENTES  ")

@@ -33,6 +33,10 @@ class Persistencia(Entidade):
       fileP.write(str(i.quantidade) + "\n")
       fileP.write(str(i.preco_unitario) + "\n")
       fileP.write(str(i.id) + "\n")
+      fileP.write(str(i.fornecedor.nome) + "\n")
+      fileP.write(str(i.fornecedor.cnpj) + "\n")
+      fileP.write(str(i.fornecedor.telefone) + "\n")
+      fileP.write(str(i.fornecedor.endereco) + "\n")
     
     fileP.close()
   
@@ -83,16 +87,19 @@ class Persistencia(Entidade):
     tam = 0
 
     while tam < len(lp)-1:
-      p = produto(0, 0, 0, 0)
+      p = produto(0, 0, 0, 0, 0)
 
       p.nome = lp[tam].strip()
       p.quantidade = int(lp[tam+1])
       p.preco_unitario = float(lp[tam+2])
       p.id = int(lp[tam+3])
+      f = Fornecedor(lp[tam+4].strip(),int(lp[tam+5]),lp[tam+6].strip(),lp[tam+7].strip())
+      p.fornecedor = f
       
       vp.addProduto(p)
-      tam += 4
+      tam += 8
       del p
+      del f
 
     fileP.close()
 
@@ -121,7 +128,7 @@ class Persistencia(Entidade):
     tam = 0
 
     while tam < len(lv)-1:
-      p = produto(0, 0, 0, 0)
+      p = produto(0, 0, 0, 0, 0)
 
       p.nome = lv[tam].strip()
       p.quantidade = int(lv[tam+1])

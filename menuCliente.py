@@ -8,7 +8,6 @@ class MenuCliente:
     while x != 0:
       if x == 1:
         nome = input("Digite o nome do cliente: ")
-        nome = nome.title()
         tel = input("Digite o telefone do cliente: ")
         end = input("Digite o endereço do cliente: ")
         cpf = int(input("Digite o cpf do cliente: "))
@@ -22,7 +21,6 @@ class MenuCliente:
 
         if x == 1:
           nome = input("Digite o nome do cliente: ")
-          nome = nome.title()
           c = vc.buscaClienteNome(nome)
           
         elif x == 2:

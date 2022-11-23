@@ -1,4 +1,3 @@
-from persistência import persistencia
 from vetorProduto import *
 from cliente import *
 from Produto import *
@@ -7,15 +6,14 @@ from entidade import *
 from persistencia import *
 
 class Venda(Entidade):
-    def __init__ (self, nome):
-        super().__init__('venda', 0)
-        self.comprador = nome
+    def __init__ (self, cliente, codigo):
+        super().__init__(codigo)
+        self.cliente = cliente
         self.carrinho = []
 
     def identificacao(self):
         for p in self.carrinho:
             print(p.nome, p.quantidade)
-
 
 
 class menuVenda(Venda):

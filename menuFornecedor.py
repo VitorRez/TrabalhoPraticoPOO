@@ -14,7 +14,6 @@ class menuFornecedor:
             #Função de cadstrar fornecedor
             elif x==1:
                 nome = input("Digite o nome do Fornecedor: ")
-                nome = nome.title()
                 cnpj = int(input("Digite o cnpj do Fornecedor: "))
                 telefone = input("Digite o telefone do Fornecedor: ")
                 endereco = input("Digite o endereco do Fornecedor: ")
@@ -28,7 +27,6 @@ class menuFornecedor:
                     x = int(input("\nSe você quiser buscar: \nPor nome digite 1 \nPor código digite 2 "))
                 if x==1:
                     nome = input("Digite o nome do Fornecedor: ")
-                    nome = nome.title()
                     vf.buscarFornecedorNome(nome)
                 elif x==2:
                     cnpj = int(input("Digite o cnpj do Fornecedor: "))

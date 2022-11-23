@@ -1,0 +1,6 @@
+1-resolver o negocio de tirar do carrinho
+2-testar adicionar quantidade de produto
+3-testar tudo de fornecedor
+4-tratamento de exceção
+5-camada de persistência
+6-tirar nome e codigo do produto

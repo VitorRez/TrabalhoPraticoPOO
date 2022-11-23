@@ -2,7 +2,8 @@ from entidade import Entidade
 
 class Cliente(Entidade):
   def __init__(self, nome, telefone, endereco, cpf):
-    super().__init__(cpf, nome)
+    super().__init__(cpf)
+    self.nome = nome
     self.telefone = telefone
     self.endereco = endereco
 

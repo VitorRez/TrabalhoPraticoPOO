@@ -2,9 +2,8 @@ from abc import ABC, abstractmethod
 
 class Entidade (ABC):
 
-    def __init__(self, id, nome):
+    def __init__(self, id):
         self.id = id
-        self.nome = nome
 
     @abstractmethod
     def identificacao(self): pass
