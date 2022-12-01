@@ -8,9 +8,9 @@ class menuFornecedor:
             print("Digite um valor válido\n")
             x = int(input("Digite: \n0 Para sair \n1 Para cadastrar Fornecedor \n2 Buscar Fornecedor \n3 Para listar Fornecedores \n4 Remover Fornecedores\n"))
         
-        while x==1 or x==2 or x==3 or x==4:
+        while x==0 or x==1 or x==2 or x==3 or x==4:
             if x==0:
-                break
+                return
             #Função de cadstrar fornecedor
             elif x==1:
                 nome = input("Digite o nome do Fornecedor: ")

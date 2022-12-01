@@ -16,9 +16,9 @@ class vetorVenda(Venda):
     def listaVendas(self):
         for v in self.vendas:
             print(v.cliente.nome)
-            print(v.cliente.cpf)
+            print(v.cliente.id)
             for c in v.carrinho:
                 print(c.nome)
-                print(c.precounitario)
+                print(c.preco_unitario)
                 print(c.quantidade)
     

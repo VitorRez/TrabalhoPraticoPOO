@@ -1,0 +1,4 @@
+carrinho,nome,codigo,precounitario,quantidade,fnome,fcnpj,ftelefone,fendereco
+0,tomate,1,1.0,5,loja de tomates,1,1,1
+0,batata,2,2.0,5,loja de batatas,2,2,2
+1,tomate,1,1.0,5,loja de tomates,1,1,1

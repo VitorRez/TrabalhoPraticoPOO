@@ -20,7 +20,7 @@ class Venda(Entidade):
             return 1
         if p.quantidade < quantidade:
             return 2
-        p2 = produto(p.nome, p.id, p.fornecedor, p.precounitario, quantidade)
+        p2 = produto(p.nome, p.id, p.fornecedor, p.preco_unitario, quantidade)
         p.quantidade -= quantidade
         self.carrinho.append(p2)
         return 0
@@ -31,7 +31,7 @@ class Venda(Entidade):
             return 1
         if p.quantidade < quantidade:
             return 2
-        p2 = produto(p.nome, p.id, p.fornecedor, p.precounitario, quantidade)
+        p2 = produto(p.nome, p.id, p.fornecedor, p.preco_unitario, quantidade)
         p.quantidade -= quantidade
         self.carrinho.append(p2)
         return 0
@@ -68,13 +68,17 @@ class Venda(Entidade):
 
     def finalizarVenda(self):
         valor_total = 0
-        for p in self.varrinho:
+        for p in self.carrinho:
             valor_total += p.quantidade * p.preco_unitario
             print("Item: ", p.nome)
             print("Quantidade: ", p.quantidade)
             print("Valor unitário: ", p.preco_unitario)
         print("\nTotal da compra: ", valor_total)
-        self.carrinho.clear()
+
+    def listaCarrinho(self):
+        for p in self.carrinho:
+            print(p.nome)
+            print(p.fornecedor.nome)
 
     def cancelarVenda(self, vp):
         for p in self.carrinho:

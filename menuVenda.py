@@ -5,8 +5,11 @@ from cliente import *
 from Produto import *
 
 class menuVenda:
-    def menuV(ve, vc, vp):
+    def menuV(vve, c, vp, cd):
+        ve = Venda(c, cd)
         comando = int(input("Sair: 0\nRemover Produto do carrinho: 1\nAdicionar produto no carrinho: 2\nAlterar quantidade de um produto: 3\nFinalizar compra: 4\nCancelar compra: 5\n"))
+        if comando == 6:
+                vve.listaVendas()
         if comando < 0 or comando > 5:
             comando = verifica_validade(comando, 0, 5)
             
@@ -28,6 +31,7 @@ class menuVenda:
                         break
                     print(p.nome, " foi removido com sucesso")
                     ve.removeCarrinho(p.codigo)
+        
             if comando == 2:
                 metodo = int(input("Adicionar produto pelo código: 1\nAdicionar produto pelo nome: 2\nVoltar: 3\n"))
                 metodo = verifica_validade(metodo, 1, 3)
@@ -67,6 +71,7 @@ class menuVenda:
                                 control = ve.addCarrinhoNome(quantidade, vp, nome)
                         if x == 2:
                             break
+        
             if comando == 3:
                 metodo = int(input("Alterar pelo código: 1\nAlterar pelo nome: 2\nVoltar: 3\n"))
                 metodo = verifica_validade(metodo, 1, 3)
@@ -79,13 +84,16 @@ class menuVenda:
                     nome = input("Digite o nome do produto: ")
                     quantidade = int(input("Digite a nova quantidade: "))
                     control = ve.alteraQntdNome(nome, vp, quantidade)
+        
             if comando == 4:
                 x=int(input("Continuar: 1\nVoltar: 2\n"))
                 x = verifica_validade(x, 1, 2)
                 if x == 1:
                     ve.finalizarVenda()
+                    vve.addVenda(ve)
                 if x == 2:
                     ve.cancelarVenda(vp)
+        
             if comando == 5:
                 x=int(input("Continuar: 1\nVoltar: 2\n"))
                 x = verifica_validade(x, 1, 2)
@@ -94,8 +102,11 @@ class menuVenda:
                 if x == 2:
                     break
             comando = int(input("Sair: 0\nRemover Produto do carrinho: 1\nAdicionar produto no carrinho: 2\nAlterar quantidade de um produto: 3\nFinalizar compra: 4\nCancelar compra: 5\n"))
+            if comando == 6:
+                vve.listaVendas()
             if comando < 0 or comando > 5:
                 comando = verifica_validade(comando, 0, 5)
+            
 
 def verifica_validade(var, inf, sup):
         while(var < inf or var > sup):
