@@ -39,4 +39,11 @@ class interface_add_cliente():
         self.table.preenche(cliente)
         #self.f = [self.nome.get(), self.id.get(), self.telefone.get(), self.endereco.get()]
         print(self.nome.get(), self.id.get(), self.telefone.get(), self.endereco.get())
-        self.raiz.destroy()
+        
+        #limpa os campos de entrada de dados para add mais
+        self.nome.delete(0, END)
+        self.id.delete(0, END)
+        self.telefone.delete(0, END)
+        self.endereco.delete(0, END)
+        
+        #self.raiz.destroy()
