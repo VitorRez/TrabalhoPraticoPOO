@@ -6,9 +6,9 @@ from tkinter import ttk
 
 class table:
 
-    def __init__(self, raiz, vetor):
+    def __init__(self, raiz, vetor, frame, sb):
         self.raiz = raiz
-        self.table = Listbox(raiz, width=80)
+        self.table = Listbox(frame, width=80, yscrollcommand=sb.set)#coloquei a listbox no frame e n na janela e dei o comando da scrollbar
         self.table.insert(END, 'Nome                CNPJ                Telefone            Endereço            ')
         for i in vetor.Fornecedores:
             self.preenche(i)
