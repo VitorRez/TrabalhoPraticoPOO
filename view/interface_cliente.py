@@ -12,8 +12,20 @@ class interface_cliente(interface):
 
     def __init__(self, nome, raiz, vc):
         super().__init__(nome, raiz)
+        
+        #Criei um frame e uma scrollbar nesse frmae
+        self.frame = Frame(raiz)
+        self.sb = Scrollbar(self.frame, orient=VERTICAL)
+        
         self.vc = vc
-        self.table = table(raiz, vc)
+        self.table = table(raiz, vc, self.frame, self.sb)
+        self.table.table.pack(side=LEFT)
+        
+        #configurei a scrollbar
+        self.sb.config(command=self.table.table.yview)
+        self.sb.pack(side=RIGHT, fill=Y)
+        self.frame.pack()
+        
         self.bt1 = Button(raiz, text='Cadastrar Cliente', command=self.JanelaAdd)
         self.bt1.pack(side=LEFT)
         self.bt2 = Button(raiz, text='Fechar', command=self.fechar)
